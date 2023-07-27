@@ -8,6 +8,8 @@ require("dotenv").config()
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var studentsRouter = require('./routes/student')
+var cohortRouter = require('./routes/cohort')
+var bookRouter= require('./routes/book')
 var app = express();
 
 // view engine setup
@@ -24,6 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/students', studentsRouter);
+app.use('/cohorts', cohortRouter)
+app.use('/books', bookRouter)
 
 
 // catch 404 and forward to error handler
@@ -41,5 +45,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
